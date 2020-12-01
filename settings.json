@@ -1,0 +1,10 @@
+{
+	"editor.formatOnSave": true,
+	"tslint.autoFixOnSave": true,
+	"prettier.printWidth": 80,
+	"prettier.tabWidth": 2,
+	"prettier.singleQuote": true,
+	"prettier.semi": true,
+	"prettier.useTabs": false,
+	"prettier.bracketSpacing": true
+}
