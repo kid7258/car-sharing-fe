@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MemberService } from '../member.service';
 
 export interface Member {
   id: number;
   email: string;
   username: string;
-  password?: string;
+  password: string;
 }
 
-const MEMBERS: Member[] = [
-  { id: 1, email: 'kid7258@naver.com', username: '공기경' },
-  { id: 2, email: 'kid7258@gmail.com', username: '공기경' },
-];
 @Component({
   selector: 'app-member',
   templateUrl: './member.component.html',
@@ -18,8 +15,12 @@ const MEMBERS: Member[] = [
 })
 export class MemberComponent implements OnInit {
   displayedColumns: string[] = ['id', 'email', 'username'];
-  dataSource = MEMBERS;
-  constructor() {}
+  dataSource: Member[];
+  constructor(private memberService: MemberService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.memberService.getMembers().subscribe((data) => {
+      this.dataSource = data;
+    });
+  }
 }

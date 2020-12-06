@@ -1,5 +1,7 @@
-import { Input, Output, EventEmitter, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,20 +9,25 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  @Input() error: string | null;
-  @Output() submitEM = new EventEmitter();
-
   form: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
   });
 
-  submit() {
-    if (this.form.valid) {
-      console.log(this.form);
-    }
-  }
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
+
+  submit() {
+    if (!this.form.invalid) {
+      this.authService.login(this.form.value).subscribe(
+        (result) => {
+          this.router.navigate(['/']);
+        },
+        (error) => {
+          this.router.navigate(['/login']);
+        }
+      );
+    }
+  }
 }

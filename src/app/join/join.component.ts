@@ -1,5 +1,7 @@
-import { Input, Output, EventEmitter, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MemberService } from '../member.service';
 
 @Component({
   selector: 'app-join',
@@ -7,18 +9,19 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./join.component.css'],
 })
 export class JoinComponent implements OnInit {
-  @Input() error: string | null;
-  @Output() submitEM = new EventEmitter();
-
   form: FormGroup = new FormGroup({
     email: new FormControl(''),
-    username: new FormControl(''),
+    name: new FormControl(''),
     password: new FormControl(''),
   });
 
-  constructor() {}
+  constructor(private memberSerivce: MemberService, private route: Router) {}
 
   ngOnInit(): void {}
 
-  submit() {}
+  submit() {
+    this.memberSerivce.join(this.form.value).subscribe((result) => {
+      this.route.navigate(['/login']);
+    });
+  }
 }
