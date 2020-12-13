@@ -1,0 +1,66 @@
+<mat-card>
+  <mat-card-title>Join</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="차량 모델"
+            formControlName="model"
+          />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="차량 번호"
+            formControlName="number"
+          />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="주차 위치"
+            formControlName="parking"
+          />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="연료 종류"
+            formControlName="fuelType"
+          />
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="연료량"
+            formControlName="fuelQuantity"
+          />
+        </mat-form-field>
+      </p>
+
+      <div class="button">
+        <button type="button" mat-button [routerLink]="'/login'">Cancel</button>
+        <button type="submit" mat-button>Join</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

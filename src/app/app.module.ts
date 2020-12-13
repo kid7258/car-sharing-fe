@@ -15,6 +15,7 @@ import { MemberComponent } from './member/member.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JoinComponent } from './join/join.component';
+import { BoardFormComponent } from './board/board-form/board-form.component';
 
 export function tokenGetter() {
   return localStorage.getItem('accessToken');
@@ -28,6 +29,7 @@ export function tokenGetter() {
     MemberComponent,
     LoginComponent,
     JoinComponent,
+    BoardFormComponent,
   ],
   imports: [
     BrowserModule,
