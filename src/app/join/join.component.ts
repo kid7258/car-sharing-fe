@@ -19,7 +19,7 @@ export class JoinComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  submit() {
+  submit(): void {
     this.memberSerivce.join(this.form.value).subscribe((result) => {
       this.route.navigate(['/login']);
     });
