@@ -1,7 +1,14 @@
 <mat-card>
-  <mat-card-title>Join</mat-card-title>
+  <mat-card-title>차량 등록</mat-card-title>
   <mat-card-content>
     <form [formGroup]="form" (ngSubmit)="submit()">
+        <input type="file" #fileInput ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)" hidden/>
+        <div (click)="fileInput.click()">
+          <button type="button">
+             차량 사진 업로드
+          </button>
+        </div>
+
       <p>
         <mat-form-field>
           <input

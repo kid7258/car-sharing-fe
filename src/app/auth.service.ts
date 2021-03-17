@@ -8,7 +8,7 @@ import { tap, shareReplay } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  readonly API = '/api';
+  readonly API = 'http://localhost:8080';
   // https://poiemaweb.com/angular-jwt-authentication
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
 
