@@ -8,13 +8,13 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class MemberService {
-  readonly API = '/api';
+  readonly API = 'http://localhost:8080';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   getMemberById(id: string): Observable<any> {
     const headers = new HttpHeaders().set(
-      'X-AUTH-TOKEN',
+      'Authorization',
       this.authService.getToken()
     );
 
@@ -25,7 +25,7 @@ export class MemberService {
 
   getMembers(): Observable<any> {
     const headers = new HttpHeaders().set(
-      'X-AUTH-TOKEN',
+      'Authorization',
       this.authService.getToken()
     );
 
