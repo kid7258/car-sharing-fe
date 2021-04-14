@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -12,6 +12,12 @@ export class BoardService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   create(boardInfo): Observable<any> {
-    return this.http.post<any>(`${this.API}/board`, boardInfo);
+
+    const headers = new HttpHeaders().set(
+      'Authorization',
+      this.authService.getToken()
+    );
+
+    return this.http.post<any>(`${this.API}/cars`, boardInfo, { headers });
   }
 }

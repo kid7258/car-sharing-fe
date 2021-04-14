@@ -1,33 +1,38 @@
-<mat-card>
-  <mat-card-title>Login</mat-card-title>
-  <mat-card-content>
-    <form [formGroup]="form" (ngSubmit)="submit()">
-      <p>
-        <mat-form-field>
-          <input
-            type="email"
-            matInput
-            placeholder="email"
-            formControlName="email"
-          />
-        </mat-form-field>
-      </p>
+<div class="wrapper">
+  <div class="card">
+    <div class="card_content">
+      <div class="card_title"><i class="fas fa-sign-in-alt"></i><h2>Login</h2></div>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <p>
+          <mat-form-field>
+            <input
+              type="email"
+              matInput
+              placeholder="email"
+              formControlName="email"
+            />
+          </mat-form-field>
+        </p>
+  
+        <p>
+          <mat-form-field>
+            <input
+              type="password"
+              matInput
+              placeholder="Password"
+              formControlName="password"
+            />
+          </mat-form-field>
+        </p>
 
-      <p>
-        <mat-form-field>
-          <input
-            type="password"
-            matInput
-            placeholder="Password"
-            formControlName="password"
-          />
-        </mat-form-field>
-      </p>
-
-      <div class="button">
-        <button type="button" mat-button [routerLink]="'/join'">Join</button>
-        <button type="submit" mat-button>Login</button>
-      </div>
-    </form>
-  </mat-card-content>
-</mat-card>
+        <div class="login_btn">
+          <button type="submit" mat-button color="primary">Login</button>
+        </div>
+        
+        <p class="text_mute">Forgot password? <a>Reset</a></p>
+        <p class="text_mute">Don’t have an account? <a [routerLink]="'/join'">Sign up</a></p>
+       
+      </form>
+    </div>
+  </div>
+</div>

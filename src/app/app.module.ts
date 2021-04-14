@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JoinComponent } from './join/join.component';
 import { BoardFormComponent } from './board/board-form/board-form.component';
+import { BackButtonDirective } from './directives/back-button.directive';
 
 export function tokenGetter() {
   return localStorage.getItem('accessToken');
@@ -30,6 +31,7 @@ export function tokenGetter() {
     LoginComponent,
     JoinComponent,
     BoardFormComponent,
+    BackButtonDirective,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,7 @@ export function tokenGetter() {
       config: {
         tokenGetter: tokenGetter,
       },
-    }),
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
