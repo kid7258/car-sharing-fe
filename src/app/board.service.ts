@@ -11,13 +11,13 @@ export class BoardService {
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  create(boardInfo): Observable<any> {
+  create(carData): Observable<any> {
 
     const headers = new HttpHeaders().set(
       'Authorization',
       this.authService.getToken()
     );
 
-    return this.http.post<any>(`${this.API}/cars`, boardInfo, { headers });
+    return this.http.post<any>(`${this.API}/cars`, carData, { headers });
   }
 }

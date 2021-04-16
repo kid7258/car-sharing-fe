@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FileUploader } from 'ng2-file-upload';
 import { BoardService } from 'src/app/board.service';
+import { eFuel } from 'src/app/shared/enums';
 
 @Component({
   selector: 'app-board-form',
@@ -11,13 +12,21 @@ import { BoardService } from 'src/app/board.service';
 export class BoardFormComponent implements OnInit {
   @Output() cancelAdd = new EventEmitter();
   @Output() submitForm = new EventEmitter();
+  fuelList = [
+    { value: eFuel.DIESEL, name: '디젤' },
+    { value: eFuel.GASOLIN, name: '휘발유'},
+    { value: eFuel.UNLEADED_GASOLIN, name: '무연 휘발유'},
+    { value: eFuel.LIGHT_OIL, name: '경유'},
+    { value: eFuel.LPG, name: 'LPG'}
+  ];
   form: FormGroup = new FormGroup({
-    // image: new FormControl(),
+    image: new FormControl(),
     model: new FormControl(''),
     number: new FormControl(''),
     parking: new FormControl(''),
-    fuelType: new FormControl(''),
-    fuelQuantity: new FormControl(''),
+    engine: new FormControl(eFuel.LIGHT_OIL),
+    quantity: new FormControl(),
+    etc: new FormControl('')
   });
 
   selectedFiles: FileList;
@@ -39,12 +48,10 @@ export class BoardFormComponent implements OnInit {
 
   public onFileSelected(event: EventEmitter<File[]>) {
     const file: File = event[0];
-    console.log(file);
   }
 
   onFileChanged(event) {
     this.selectedFiles = event.target.files;
-    console.log(this.selectedFiles)
 
     let reader = new FileReader();
     if(event.target.files) {
@@ -64,7 +71,19 @@ export class BoardFormComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form)
-    this.boardService.create(this.form.value).subscribe((result) => {console.log(result)});
+    const formData = new FormData();
+    formData.append('image', this.form.get('image').value);
+    formData.append('model', this.form.get('model').value);
+    formData.append('number', this.form.get('number').value);
+    formData.append('parking', this.form.get('parking').value);
+    formData.append('engine', this.form.get('engine').value);
+    formData.append('quantity', this.form.get('quantity').value);
+    formData.append('etc', this.form.get('etc').value);
+
+    this.boardService.create(formData).subscribe((result) => {console.log(result)});
+  }
+
+  onImgUpload(file:File) {
+    this.form.get('image').setValue(file);
   }
 }

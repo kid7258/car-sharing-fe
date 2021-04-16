@@ -10,18 +10,25 @@
   flex-direction: column;
   justify-content: center;
 
-  .board_header {
+  .car_header {
     flex-direction: row;
     display: flex;
     justify-content: flex-end;
     width: 100%;
     margin: 10px 30px 10px 10px;
+
+    & > button {
+      margin-right: 10px;
+    }
   }
 
   .car_add_form {
     display: flex;
     height: calc(100vh - 128px);
     align-items: center;
+    & > form {
+      display: flex;
+    }
   }
 }
 

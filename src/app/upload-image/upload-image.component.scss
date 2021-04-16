@@ -1,0 +1,53 @@
+.upload_img {
+  margin-right: 20px;
+  .img_content {
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    border: 1px dashed #c4c3c3;
+    margin-bottom: 20px;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
+
+    & > .no_img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+
+      & > label {
+        & > .fa-image {
+          // color: #bdd2b6;
+          color: #c4c3c3;
+
+          &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      & > #img_input {
+        display: none;
+      }
+    }
+  }
+
+  .img_title {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    & > .fas {
+      margin-right: 10px;
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+      }
+    }
+  }
+}

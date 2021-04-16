@@ -1,5 +1,5 @@
 <div class="car_add">
-  <div class="board_header">
+  <div class="car_header">
     <button mat-raised-button aria-label="cancel" class="cancel_btn" (click)="cancel()">
       <mat-icon>close</mat-icon> 취소
     </button>
@@ -9,74 +9,68 @@
   </div>
   <div class="car_add_form">
     <form [formGroup]="form">
-      <!-- <input type="file" #fileInput ng2FileSelect [uploader]="uploader" (onFileSelected)="onFileSelected($event)" hidden/> -->
-      <!-- <div (click)="fileInput.click()">
-        <button type="button">
-           차량 사진 업로드
-        </button>
-      </div> -->
-      <input type="file" (change)="onFileChanged($event)" multiple >
-      <ng-container *ngIf="urls && urls.length > 0">
-        <ng-template *ngFor="let url of urls">
-          <img src={{url}}>
-        </ng-template>
-        
-      </ng-container>
-      
-    <p>
-      <mat-form-field>
-        <input
-          type="text"
-          matInput
-          placeholder="차량 모델"
-          formControlName="model"
-        />
-      </mat-form-field>
-    </p>
-
-    <p>
-      <mat-form-field>
-        <input
-          type="text"
-          matInput
-          placeholder="차량 번호"
-          formControlName="number"
-        />
-      </mat-form-field>
-    </p>
-
-    <p>
-      <mat-form-field>
-        <input
-          type="text"
-          matInput
-          placeholder="주차 위치"
-          formControlName="parking"
-        />
-      </mat-form-field>
-    </p>
-
-    <p>
-      <mat-form-field>
-        <input
-          type="text"
-          matInput
-          placeholder="연료 종류"
-          formControlName="fuelType"
-        />
-      </mat-form-field>
-    </p>
-
-    <p>
-      <mat-form-field>
-        <input
-          type="text"
-          matInput
-          placeholder="연료량"
-          formControlName="fuelQuantity"
-        />
-      </mat-form-field>
-    </p>
+      <div>
+        <div class="car_img">
+          <app-upload-image (imgFile)="onImgUpload($event)"></app-upload-image>
+        </div>
+      </div>
+      <div>
+        <p>
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              placeholder="차량 모델"
+              formControlName="model"
+            />
+          </mat-form-field>
+        </p>
+    
+        <p>
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              placeholder="차량 번호"
+              formControlName="number"
+            />
+          </mat-form-field>
+        </p>
+    
+        <p>
+          <mat-form-field>
+            <input
+              type="text"
+              matInput
+              placeholder="주차 위치"
+              formControlName="parking"
+            />
+          </mat-form-field>
+        </p>
+    
+        <p>
+          <mat-form-field>
+            <mat-label>유류</mat-label>
+            <mat-select formControlName="engine">
+              <mat-option *ngFor="let fuel of fuelList;" [value]="fuel.value">
+                {{ fuel.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>
+    
+        <p>
+          <mat-form-field>
+            <input
+              type="number"
+              matInput
+              placeholder="연료량(km)"
+              formControlName="quantity"
+            />
+          </mat-form-field>
+        </p>
+    </div>
+    
   </form>
 
   <!-- 되돌아가는 링크 필요 -->

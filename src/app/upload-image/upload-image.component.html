@@ -1,0 +1,26 @@
+<div class="upload_img">
+  <div class="img_content">
+    <ng-container *ngIf="urls; else noImg">
+      <img src="{{urls}}">
+    </ng-container>
+    <ng-template #noImg>
+      <div class="no_img" >
+        <!-- <i class="far fa-image fa-5x"></i> -->
+        <label for="img_input">
+          <i class="far fa-image fa-5x"></i>
+        </label>
+        <input
+          id="img_input"
+          type="file"
+          accept="image/*"
+          (change)="onFileChanged($event)"
+        />
+      </div>
+    </ng-template>
+  </div>
+  <div class="img_title" *ngIf="imgTitle">
+    <i class="fas fa-times" (click)="deleteImg($event)"></i>
+    <span>{{imgTitle}}</span>
+  </div>
+  
+</div>

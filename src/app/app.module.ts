@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { JoinComponent } from './join/join.component';
 import { BoardFormComponent } from './board/board-form/board-form.component';
 import { BackButtonDirective } from './directives/back-button.directive';
+import { UploadImageComponent } from './upload-image/upload-image.component';
 
 export function tokenGetter() {
   return localStorage.getItem('accessToken');
@@ -32,6 +33,7 @@ export function tokenGetter() {
     JoinComponent,
     BoardFormComponent,
     BackButtonDirective,
+    UploadImageComponent
   ],
   imports: [
     BrowserModule,
